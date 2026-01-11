@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It's 5 PM Somewhere</title>
+    <meta name="description"
+        content="A beautiful bar wallpaper showing exactly where in the world it is currently 5 PM.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="background-container">
+        <div id="overlay"></div>
+        <div id="background-image"></div>
+    </div>
+
+    <main>
+        <div class="content">
+            <h1 id="cheers-text">Cheers, it's <span id="time-status">5 PM</span> in <span id="city-name">...</span></h1>
+            <p id="local-info">Calculating the perfect time for a drink...</p>
+        </div>
+    </main>
+
+    <footer id="refresh-indicator">
+        Updates automatically
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

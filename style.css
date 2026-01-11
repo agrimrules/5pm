@@ -1,0 +1,173 @@
+:root {
+    --primary-font: 'Outfit', sans-serif;
+    --accent-font: 'Playfair Display', serif;
+    --text-color: #ffffff;
+    --accent-color: #ffcc33;
+    --overlay-color: rgba(0, 0, 0, 0.4);
+    --transition-speed: 2s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0d0d0d;
+    color: var(--text-color);
+    font-family: var(--primary-font);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+#background-image {
+    width: 110%;
+    /* Slightly larger for movement */
+    height: 110%;
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    background-size: cover;
+    background-position: center;
+    transition: background-image var(--transition-speed) ease-in-out;
+    filter: brightness(0.6) contrast(1.1) saturate(1.2);
+    animation: slowPan 60s infinite alternate ease-in-out;
+}
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+}
+
+main {
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    max-width: 90%;
+}
+
+.content {
+    animation: fadeIn 3s ease-out;
+}
+
+h1 {
+    font-size: 4.5rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+#city-name {
+    font-family: var(--accent-font);
+    font-weight: 700;
+    font-style: italic;
+    display: block;
+    font-size: 7.5rem;
+    margin-top: 1rem;
+    color: var(--accent-color);
+    text-shadow: 0 0 40px rgba(255, 204, 51, 0.4);
+    line-height: 1;
+}
+
+#local-info {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    opacity: 0.6;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+#local-info::before,
+#local-info::after {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent-color);
+    opacity: 0.5;
+}
+
+#refresh-indicator {
+    position: fixed;
+    bottom: 2rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.7rem;
+    opacity: 0.3;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slowPan {
+    from {
+        transform: scale(1) translateX(0);
+    }
+
+    to {
+        transform: scale(1.1) translateX(-2%);
+    }
+}
+
+/* TV Optimization */
+@media (min-width: 1920px) {
+    h1 {
+        font-size: 6rem;
+    }
+
+    #city-name {
+        font-size: 10rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    #city-name {
+        font-size: 3.5rem;
+    }
+
+    #local-info {
+        font-size: 1rem;
+    }
+}
